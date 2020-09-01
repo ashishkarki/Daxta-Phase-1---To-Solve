@@ -1,0 +1,122 @@
+/* You can add global styles to this file, and also import other style files */
+@mixin assign-grid-area($grid-area-name)
+    grid-row-start: $grid-area-name
+    grid-row-end: $grid-area-name
+    grid-column-start: $grid-area-name
+    grid-column-end: $grid-area-name
+
+$input-width: 190px
+$basic-font-size: 11pt  
+
+
+%input-settings
+    border: 1px solid grey    
+    border-color: black
+    font-size: $basic-font-size
+    border-radius: 5px
+    padding: 4px 4px
+    margin: 2px 5px
+    width: $input-width
+    &:focus
+        background-color: #f2f4f5
+
+.address-item
+    display: grid
+    grid-template-areas: "left mid right"
+    grid-template-rows: auto
+    grid-template-columns: 35px auto auto
+    margin: 15px
+    border-radius: 5px
+    padding: 4px
+    &:hover
+        background-color: #f2f4f5
+        border: solid 
+    .selected
+        border-color: pink
+
+.ad-left
+    @include assign-grid-area(left)
+    align-self: center
+
+.ad-right
+    @include assign-grid-area(right)
+    align-self: center
+
+.ad-mid
+    @include assign-grid-area(mid)
+    align-self: center
+    display: flex
+    flex-direction: column
+    line-height: 1em
+    margin: 3px
+
+.address-item-header
+    font-weight: bold
+    font-size: 1.05em
+    font-style: italic
+    margin: 0px 0px 4px 0px
+
+.form-label
+    margin: 1px 3px 1px 1px
+    width: 120px
+    text-align: right
+
+.block-label
+    margin: 18px 1px 1px 1px
+    font-style: italic
+
+
+input
+    @extend %input-settings
+    
+
+select
+    @extend %input-settings
+
+
+.button-flex
+    display: flex
+    flex-direction: row
+
+.button-space
+    margin: 5px
+
+h1 
+    margin: 15px
+
+button
+    margin: 10px
+    color: #ffffff
+    background-color: #00004d
+    padding: 5px
+    border-radius: 5px
+
+code
+    background-color: #f0e5c7
+    color: #5c0505
+    padding: 2px 
+    border: solid 1px gray
+    border-radius: 2px
+
+li
+    margin: 10px
+
+
+.all
+    width: 75%
+    
+
+.top-data 
+    border: 2px solid #00004d
+    color: #00004d
+    border-radius: 5px
+    padding: 15px
+    margin: 15px
+
+.response-1
+    border: 2px solid #E91E63
+    color: #ffffff
+    border-radius: 5px
+    padding: 15px
+    margin: 15px
+    background-color: #E91E63

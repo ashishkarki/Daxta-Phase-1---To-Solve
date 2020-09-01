@@ -1,0 +1,44 @@
+<div class="all">
+  <h1>DAXTA Technical Assessment: Phase I</h1>
+  <div class="top-data">
+    <div>
+      <h2>Define Calculated$</h2>
+      <p>Given two observables <code class="inline-code">NestedArray$</code> and <code
+          class="inline-code">ReductionOperator$</code>, create a new observable <code
+          class="inline-code">Calculated$</code> that applies the reduction operator to a flattened version of <code
+          class="inline-code">NestedArray$</code>.</p>
+      <ul>
+        <li>A well formed element of <code class="inline-code">NestedArray$</code> will either be an integer or another
+          <code class="inline-code">NestedArray$</code>. There are no limits to the depth of the array.</li>
+        <li><code class="inline-code">ReductionOperator$</code> should emit either &quot;Add&quot; or
+          &quot;Multiply&quot;.</li>
+        <li>When &quot;Add&quot; is emitted, <code class="inline-code">Calculated$</code> should be set to the sum of
+          all of the elements of the flattened array. When &quot;Multiply&quot; is emitted, <code
+            class="inline-code">Calculated$</code> should be set to the product of all of the elements of the flattened
+          array.</li>
+        <li>Example: Given <code class="inline-code">[2, 3, 4, [5, [6, 7, 8], 9]]</code> and
+          <code> &quot;Add&quot;</code> the output
+          should calculated by the operation 2+3+4+5+6+7+8+9 leading to the solution of <code
+            class="inline-code">54</code>.</li>
+      </ul>
+      <p>Please provide relevant tests to accompany your product.</p>
+      <p><em>Note</em>: A new solution should be calculated/emitted whenever either input stream is altered. If an input
+        is changed while the task is still calculating, the results from the first task should emit before the second.
+      </p>
+    </div>
+
+    <button (click)="emitNewArray($event)">Emit Array Value</button>
+    <button (click)="toggleOperator($event)">Toggle Operator</button>
+
+
+    <div>
+      <p>Emitted (and Flattened) Array: {{ NestedArray$ | async }}</p>
+      <p>Current Operator: {{ ReductionOperator$ | async }}</p>
+    </div>
+  </div>
+  <div class="response-1">
+    Sum/Product: {{Calculated$ | async}}
+
+  </div>
+
+</div>
