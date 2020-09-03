@@ -15,14 +15,16 @@ export class AppComponent {
   constructor(private _svc: AppService) {
     this.ReductionOperator$ = new BehaviorSubject<string>("Add");
     this.NestedArray$ = new BehaviorSubject<any>(_svc.GetNestedArray());
-    //TODO: Define Calculated$
+    //TODO: Define Calculated$ Here
     this.Calculated$ = of(0);
   }
 
   emitNewArray(e) {
+    //Do not alter
     this.NestedArray$.next(this._svc.GetNestedArray());
   }
   toggleOperator(e) {
+    //Do not alter
     let nextOperator: string = "";
     if (this.ReductionOperator$.value === "Add") {
       this.ReductionOperator$.next("Multiply");
