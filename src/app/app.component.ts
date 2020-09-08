@@ -48,6 +48,12 @@ export class AppComponent {
     )
   }
 
+  ngOnDestroy() {
+    if (!this.subscription.closed) {
+      this.subscription.unsubscribe()
+    }
+  }
+
   emitNewArray(e) {
     //Do not alter
     this.NestedArray$.next(this._svc.GetNestedArray())
