@@ -1,6 +1,12 @@
 import { flatten } from '@angular/compiler'
 import { Component } from '@angular/core'
-import { Observable, BehaviorSubject, of, combineLatest } from 'rxjs'
+import {
+  Observable,
+  BehaviorSubject,
+  of,
+  combineLatest,
+  Subscription,
+} from 'rxjs'
 import { AppService, NestedArray } from './app-service.service'
 
 @Component({
@@ -14,6 +20,7 @@ export class AppComponent {
   Calculated$: Observable<number>
 
   CalculatedSubject$: BehaviorSubject<number>
+  subscription: Subscription
 
   constructor(private _svc: AppService) {
     this.ReductionOperator$ = new BehaviorSubject<string>('Add')
@@ -21,6 +28,7 @@ export class AppComponent {
     //TODO: Define Calculated$ Here
     this.CalculatedSubject$ = new BehaviorSubject<number>(0)
     this.Calculated$ = this.CalculatedSubject$.asObservable()
+    this.subscription = new Subscription()
   }
 
   ngOnInit() {
